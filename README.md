@@ -13,11 +13,7 @@ Letter Bound Detection: Finds the letters' borders using a histogram-based algor
 
 Letter Recognition: Uses a custom-trained CNN to identify the letter in each bound.
 
-<<<<<<< HEAD
-Puzzle Solver: Implements a backtracking algorithm to solve the detected puzzle. It uses a word list which removes the necessity for the user to input most words.
-=======
 Puzzle Solver: Implements a brute-force algorithm to solve the detected puzzle. It uses a word list which removes the necessity for the user to input most words.
->>>>>>> a19d043e (Added README)
 
 
 
@@ -45,8 +41,4 @@ NumPy
 
 License:
 
-<<<<<<< HEAD
 This project is licensed under the MIT License. See the LICENSE file for more details.
-=======
-This project is licensed under the MIT License. See the LICENSE file for more details.
->>>>>>> a19d043e (Added README)
