@@ -4,7 +4,7 @@ const OutputPreview = document.getElementById("OutputPreview");
 const StartBtn = document.getElementById("Start");
 const InputPreview = document.getElementById("InputPreview");
 
-let Puzzle;
+let Puzzle = null;
 
 UploadBtn.addEventListener("click", function()
 {
@@ -15,26 +15,17 @@ FileInput.addEventListener("change", async function()
 {
 	if (FileInput && FileInput.files[0])
 	{
-		const File = FileInput.files[0];
-
-		const data = new FormData();
-		data.append("InputFile",File)
+		UploadBtn.disabled = true;
 
 		try
 		{
-			const Response = await fetch("/process",{
-				method: "POST",
-				body: data
-			});
+			const ResizedImage = await ResizeImage(FileInput.files[0],800);
 
-			const Data = await Response.json();
+			InputPreview.src = ResizedImage;
+			Puzzle = ResizedImage;
 
-			if (Data.Ret)
-			{
-				Puzzle = Data.Image;
-				InputPreview.src = Data.Image;
-				StartBtn.disabled = false;
-			}
+			StartBtn.disabled = false;
+			UploadBtn.disabled = false;
 		}
 		catch (error)
 		{
@@ -72,5 +63,40 @@ StartBtn.addEventListener("click", async function()
 		console.error("Error: ",error);
 	}
 });
+
+const ResizeImage = function(file,MaxHeight)
+{
+	return new Promise(function(resolve)
+	{
+		const Reader = new FileReader();
+		Reader.onload = function(event)
+		{
+			const img = new Image();
+			img.onload = function()
+			{
+				let width = img.width;
+				let height = img.height;
+
+				if (height > MaxHeight)
+				{
+					width *= (MaxHeight/height);
+					height = MaxHeight;
+				}
+
+				const canvas = document.createElement('canvas');
+				canvas.width = width;
+				canvas.height = height;
+				
+				const ctx = canvas.getContext('2d');
+				ctx.drawImage(img,0,0,width,height);
+
+				const imgURL = canvas.toDataURL("image/png",0.8);
+				resolve(imgURL);
+			};
+			img.src = event.target.result;
+		};
+		Reader.readAsDataURL(file);
+	});
+};
 
 StartBtn.disabled = true;

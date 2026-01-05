@@ -136,19 +136,8 @@ except FileNotFoundError:
 
 #Rays
 Rays = [(0,1),(0,-1),(1,0),(-1,0),(1,1),(-1,1),(-1,-1),(1,-1)]
+
 #Function
-
-def Process(InputImg):
-	Height,Width = InputImg.shape[:2]
-	if Height > NewHeight:
-		Ratio = NewHeight/float(Height)
-		NewWidth = int(Ratio*Width)
-		InputImg = cv2.resize(InputImg , (NewWidth,NewHeight) , interpolation=cv2.INTER_AREA)
-	_,InputImgEncode = cv2.imencode('.png',InputImg)
-	InputImgEncode = base64.b64encode(InputImgEncode).decode('utf-8')
-	InputImgEncode = "data:image/png;base64,"+InputImgEncode
-	return InputImgEncode
-
 def Solve(InputImg):
 	InputImgProcessed = cv2.cvtColor(InputImg , cv2.COLOR_BGR2GRAY)
 	InputImgProcessed = cv2.GaussianBlur(src=InputImgProcessed,ksize=(3,3),sigmaX=0,sigmaY=0)
