@@ -1,0 +1,8 @@
+opencv-python-headless
+numpy
+fastapi
+uvicorn[standard]
+python-multipart
+torch
+torchvision
+aiofiles

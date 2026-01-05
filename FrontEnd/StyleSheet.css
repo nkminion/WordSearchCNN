@@ -1,0 +1,97 @@
+
+@font-face
+{
+	font-family: 'Lato Light';
+	src: url('Lato-Light.ttf');
+}
+
+body
+{
+	background-color: #0a0a0a;
+	position: absolute;
+	color:aliceblue;
+	width: 100%;
+	height: 85vh;
+	font-family: 'Lato Light';
+	margin: 0.14%;
+}
+
+h1
+{
+	font-size: 48px;
+	margin-top: 25px;
+	color: #0083FF;
+	text-align: center;
+	font-style: bold;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+button
+{
+	height: 50px;
+	width: 100px;
+	margin: 10px;
+	transition: all 0.5s;
+	border: 3px solid #0083FF;
+	border-radius: 5%;
+	background-color: #161616;
+	color: aliceblue;
+	font-family: 'Lato Light';
+	font-size: 18px;
+	flex-shrink: 0;
+}
+
+button:hover
+{
+	transform: scale(1.2);
+	border-color: #5d00ff;
+}
+
+button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+a
+{
+	color: aliceblue;
+	text-decoration: none;
+}
+
+p
+{
+	font-size: 24px;
+}
+
+img
+{
+	border: 3px solid aliceblue;
+	object-fit: contain;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.Container
+{
+	display: flex;
+}
+
+.Side
+{
+	width: 50%;
+	margin-left: 2%;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 60vh;
+}
+
+.Text
+{
+	text-align: center;
+}
+
+#FileInput
+{
+	display: none;
+}
