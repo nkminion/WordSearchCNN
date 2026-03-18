@@ -1,9 +1,10 @@
-FROM python:3.11-slim
+FROM python:3.11.15-slim-trixie
 
 WORKDIR /app
 
 COPY requirements.txt .
 
+RUN pip install --no-cache-dir --upgrade pip "wheel>=0.46.3" "setuptools>=82.0.1"
 RUN pip install --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
 
 RUN useradd -m -u 1000 user
